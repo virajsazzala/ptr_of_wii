@@ -1,0 +1,4 @@
+(executable
+ (public_name ptr_of_wii)
+ (name main)
+ (libraries ptr_of_wii))

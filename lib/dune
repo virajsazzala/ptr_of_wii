@@ -1,0 +1,2 @@
+(library
+ (name ptr_of_wii))
