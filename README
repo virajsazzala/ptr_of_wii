@@ -7,9 +7,10 @@ will help use wiimote as a point and click device. eventually maybe more.
 plan
 ----
 [X] read raw data from IR sensor device file
-[-] parse the raw IR data
+[X] parse the raw IR data
+[-] build a visualizer to debug
 [ ] do some math magic to point
-[ ] build a visualizer to debug
+[ ] test with visualizer
 [ ] read raw data from wiimote device file
 [ ] parse the raw event data
 [ ] recognize key presses
