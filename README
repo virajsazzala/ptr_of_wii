@@ -2,3 +2,16 @@ ptr_of_wii
 ==========
 
 will help use wiimote as a point and click device. eventually maybe more.
+
+
+plan
+----
+[X] read raw data from IR sensor device file
+[-] parse the raw IR data
+[ ] do some math magic to point
+[ ] build a visualizer to debug
+[ ] read raw data from wiimote device file
+[ ] parse the raw event data
+[ ] recognize key presses
+[ ] test with visualizer
+[ ] integrate with mouse events
