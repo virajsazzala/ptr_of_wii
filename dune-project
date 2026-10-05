@@ -5,11 +5,11 @@
 (generate_opam_files true)
 
 (source
- (github username/reponame))
+ (github virajsazzala/ptr_of_wii))
 
-(authors "Author Name <author@example.com>")
+(authors "Viraj Reddy SNG <vir200319@gmail.com>")
 
-(maintainers "Maintainer Name <maintainer@example.com>")
+(maintainers "Viraj Reddy SNG <vir200319@gmail.com>")
 
 (license LICENSE)
 
@@ -17,8 +17,8 @@
 
 (package
  (name ptr_of_wii)
- (synopsis "A short synopsis")
- (description "A longer description")
+ (synopsis "wiimote as point and click device")
+ (description "helps use wiimote as a point and click device")
  (depends ocaml)
  (tags
   ("add topics" "to describe" your project)))
