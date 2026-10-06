@@ -1,0 +1,16 @@
+purgatory of old, but possibily useful code
+===========================================
+
+print all points
+
+```
+Printf.printf "B1 {x: %d, y: %d} B2 {x: %d, y: %d} B3 {x: %d, y: %d} B4 {x: %d, y: %d}\n"
+                         (List.nth pos_map 0).x_pos
+                         (List.nth pos_map 0).y_pos
+                         (List.nth pos_map 1).x_pos
+                         (List.nth pos_map 1).y_pos
+                         (List.nth pos_map 2).x_pos
+                         (List.nth pos_map 2).y_pos
+                         (List.nth pos_map 3).x_pos
+                         (List.nth pos_map 3).y_pos;
+```

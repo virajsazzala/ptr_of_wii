@@ -3,14 +3,29 @@ ptr_of_wii
 
 will help use wiimote as a point and click device. eventually maybe more.
 
+note
+----
+- if atleast 2 blobs exist, can take midpoint
+- if atleast 1 blob exist, yk the prev pos of both blobs
+  + estimate if the existing one is left or right blob
+  + can get left or right by checking which prev blob state is curr close to
+  + (estimation) then take the other blob as exisiting + distance b/w blobs
+  + then take mid point, with visible and estimated blob
+- if no dots are visible, hold the cursor
+
+issue
+-----
+- math works, but not clean enough
+- error handling needs to be done
+- code is ugly, as its a poc, but gotta clean
 
 plan
 ----
 [X] read raw data from IR sensor device file
 [X] parse the raw IR data
-[-] build a visualizer to debug
-[ ] do some math magic to point
-[ ] test with visualizer
+[X] build a visualizer to debug
+[-] do some math magic to point
+[-] test with visualizer
 [ ] read raw data from wiimote device file
 [ ] parse the raw event data
 [ ] recognize key presses
