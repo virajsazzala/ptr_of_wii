@@ -1,3 +1,5 @@
+open Graphics
+
 (* setup IR event path *)
 let ir_event = 19;;
 let ir_stream_path = "/dev/input/event" ^ string_of_int ir_event;;
@@ -68,6 +70,29 @@ let pos_of_ievt ievt =
   | 23 -> let b = List.nth pos_map 3 in b.y_pos <- Int32.to_int ievt.value; Some ()
   | _ -> None;;
 
+let () =
+  open_graph " 1024x768";
+  set_window_title "ptr_of_wii - test board";;
+
+let print_point pmap n =
+  let x = 1024 - (List.nth pmap n).x_pos
+  in let y = 768 - (List.nth pmap n).y_pos
+     in fill_circle x y 10;
+        moveto x (y + 15);
+        draw_string (Printf.sprintf "(%d, %d)" x y);;
+
+let mid_point bloba blobb =
+  let ax = 1024 - bloba.x_pos
+  in let ay = 768 - bloba.y_pos
+     in let bx = 1024 - blobb.x_pos
+        in let by = 768 - blobb.y_pos
+           in ((ax + bx) / 2, (ay + by) / 2);;
+
+let print_mid_point mp =
+  let (x, y) = mp
+     in fill_circle x y 10;
+        moveto x (y + 15);
+        draw_string (Printf.sprintf "(%d, %d)" x y);;
 
 (* read data from stream *)
 let rec read_stream channel =
@@ -76,15 +101,18 @@ let rec read_stream channel =
      in let evt = ievt_of_buf buffer
         in match pos_of_ievt evt with
            | None -> read_stream channel
-           | Some _ -> Printf.printf "B1 {x: %d, y: %d} B2 {x: %d, y: %d} B3 {x: %d, y: %d} B4 {x: %d, y: %d}\n"
-                         (List.nth pos_map 0).x_pos
-                         (List.nth pos_map 0).y_pos
-                         (List.nth pos_map 1).x_pos
-                         (List.nth pos_map 1).y_pos
-                         (List.nth pos_map 2).x_pos
-                         (List.nth pos_map 2).y_pos
-                         (List.nth pos_map 3).x_pos
-                         (List.nth pos_map 3).y_pos;
-                         read_stream channel
+           | Some _ ->
+              clear_graph();
+              set_color red;
+              (* print_point pos_map 0; *)
+              print_mid_point (mid_point (List.nth pos_map 0) (List.nth pos_map 1));
+              (* set_color blue;
+              print_point pos_map 1;
+              set_color green;
+              print_point pos_map 2;
+              set_color yellow;
+              print_point pos_map 3; *)
+              read_stream channel
+
 
 let _ = read_stream ir_channel;;
